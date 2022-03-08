@@ -99,6 +99,9 @@ stopBtn.addEventListener('click' , ()=> {
         clearInterval(timeInterval);
         isPlaying= false;
         answer.readOnly = true;
+        form.addEventListener('submit' , (e)=> {
+            e.stopPropagation();
+        })
         stopBtn.innerHTML = "재시작";
         stopBtn.classList.add('active');
     } else {
