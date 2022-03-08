@@ -36,6 +36,7 @@ body {
     color: #fff;
     padding: 10px 10px;
     border-radius: 20px;
+    margin-bottom: 10px;
 }
 .playing {
     background: #fff;
@@ -55,4 +56,17 @@ body {
 }
 .msg  {
     font-size: 20px;
+}
+
+.stopBtn , .next {
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 20px;
+    background: #3f3f3f;
+    color: #fff;
+    margin: 10px 0;
+}
+.stopBtn.active  {
+    background: #fff;
+    color: #3f3f3f;
 }

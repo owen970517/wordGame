@@ -6,6 +6,7 @@ const timer = document.querySelector('.time');
 const playBtn = document.querySelector('.play');
 const scores = document.querySelector('.score');
 const overMsg = document.querySelector('.msg');
+const stopBtn = document.querySelector('.stopBtn');
 const GAME_TIME = 10;
 let isPlaying = false;
 var score = 0;
@@ -18,14 +19,7 @@ const setQuiz = () => {
     question.innerHTML = quiz.name;
     //buttonChange("게임시작");
 }
-
-init();
-
-function init() {
-       
-    buttonChange("게임시작");
-   
-}
+buttonChange("게임시작");
 
 nextBtn.addEventListener( "click" ,() => {
     if(answer.value == question.innerHTML) {
@@ -98,5 +92,22 @@ form.addEventListener('submit' , (e)=> {
     setQuiz();
     scores.innerHTML = score;
     time=GAME_TIME;
+})
+
+stopBtn.addEventListener('click' , ()=> {
+    if(isPlaying === true) {
+        clearInterval(timeInterval);
+        isPlaying= false;
+        answer.readOnly = true;
+        stopBtn.innerHTML = "재시작";
+        stopBtn.classList.add('active');
+    } else {
+        isPlaying = true;
+        answer.readOnly = false;
+        answer.focus();
+        timeInterval = setInterval(countDown , 1000);
+        stopBtn.innerHTML = "일시정지";
+        stopBtn.classList.remove('active');
+    }
 })
 
